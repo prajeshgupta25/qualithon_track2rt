@@ -105,9 +105,8 @@ public class MoviePage extends Page{
     public String releaseYear(){
         return this.testSession.driverWait().until(
             ExpectedConditions.presenceOfElementLocated(
-                By.cssSelector("ul[data-testid='hero-title-block__metadata']")
-            ) 
-        ).getText();
+                By.xpath("//*[@id='__next']/main/div/section[1]/section/div[3]/section/section/div[2]/div[1]/div/ul/li[1]/span"))).getText();
+                // By.cssSelector("#__next > main > div > section.ipc-page-background.ipc-page-background--base.sc-c7f03a63-0.kUbSjY > section > div:nth-child(4) > section > section > div.sc-94726ce4-0.cMYixt > div.sc-94726ce4-2.khmuXj > div > ul > li:nth-child(1) > span"))).getText();
     }
 
     /**
