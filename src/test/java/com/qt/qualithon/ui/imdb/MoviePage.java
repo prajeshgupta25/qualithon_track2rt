@@ -4,7 +4,7 @@ import com.qt.qualithon.TestSession;
 import com.qt.qualithon.ui.Page;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.support.ui.ExpectedCondition;
+// import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.NoSuchElementException;
@@ -105,8 +105,9 @@ public class MoviePage extends Page{
     public String releaseYear(){
         return this.testSession.driverWait().until(
             ExpectedConditions.presenceOfElementLocated(
-                By.xpath("//*[@id='__next']/main/div/section[1]/section/div[3]/section/section/div[2]/div[1]/div/ul/li[1]/span"))).getText();
-                // By.cssSelector("#__next > main > div > section.ipc-page-background.ipc-page-background--base.sc-c7f03a63-0.kUbSjY > section > div:nth-child(4) > section > section > div.sc-94726ce4-0.cMYixt > div.sc-94726ce4-2.khmuXj > div > ul > li:nth-child(1) > span"))).getText();
+                By.cssSelector("main div.sc-94726ce4-0.cMYixt div li:nth-child(1)")
+            ) 
+        ).getText();
     }
 
     /**
@@ -118,19 +119,17 @@ public class MoviePage extends Page{
         List<String> writers = new ArrayList<>();
         List<WebElement> credits = this.testSession.driverWait().until(
             ExpectedConditions.presenceOfAllElementsLocatedBy(
-              By.cssSelector("li.ipc-metadata-list__item")));
+              By.cssSelector("main div.sc-373a94f5-1 section.ipc-page-section ul li:nth-child(2) div")));
 
         // traverse credits sections to find the section with Writers
         for(WebElement credit:credits){
             try{
-                if(credit.findElement(By.cssSelector("span")).getText().equalsIgnoreCase("Writers")){
                     // traverse list of writers on page to add to writers list
                     List<WebElement> writersElements = credit.findElements(By.cssSelector("a"));
                     for(int i = 0; i < writersElements.size(); i++){
                         writers.add(writersElements.get(i).getText());
                     }
                     break;
-                }
             }catch(NoSuchElementException e){}
         }
 
@@ -141,4 +140,31 @@ public class MoviePage extends Page{
         return writers;
     }
 
+    /**
+     * get movie maturity rating
+     *
+     * @return    movie maturity rating
+     **/
+    public String maturityRating(){
+        return this.testSession.driverWait().until(
+            ExpectedConditions.visibilityOfElementLocated(
+                By.cssSelector("section div:nth-child(4) section div.sc-94726ce4-0.cMYixt li:nth-child(2) a")
+            ) 
+        ).getText();
+    }
+
+    /**
+     * get movie imdb rating
+     *
+     * @return    movie imdb rating
+     **/
+    public String imdbRating(){
+        return this.testSession.driverWait().until(
+            ExpectedConditions.visibilityOfElementLocated(
+                By.cssSelector("section div.sc-94726ce4-0.cMYixt div.sc-7ab21ed2-2.kYEdvH span.sc-7ab21ed2-1.jGRxWM")
+            ) 
+        ).getText();
+    }
+    
 }
+

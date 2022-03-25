@@ -1,9 +1,9 @@
 package com.qt.qualithon.test;
 
-import java.lang.reflect.Method;
+// import java.lang.reflect.Method;
 
 import org.testng.annotations.*;
-import org.testng.Reporter;
+// import org.testng.Reporter;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -153,20 +153,33 @@ public class MovieSearchTest {
      **/
     @Test(dataProvider = "popularMovieTitles")
     public void testMovieMetadataOnWebHasCorrectMaturityRating(String title) throws Exception {
-        // NOT IMPLEMENTED
-        throw new Exception("Test Pending");
+        MoviePage movieOnImdbWeb = new WebApp(this.testSession)
+            .launch()
+            .search(title)
+            .firstMovieResult();
+
+        // get Movie metadata from http://www.omdbapi.com/
+        Movie movie = new OMDbAPI().getMovie(title);
+        assertThat(movieOnImdbWeb.maturityRating()).isEqualTo(movie.rated());
     }
 
     /**
-     * test that movie rating score on movie page (IMDB Rating, Tomatometer) is correct compared to the
-     * movie rating score in OMDb Test Data API
+     * test that imdb rating on movie page is correct compared to the
+     * imdb rating in OMDb Test Data API
      *
      * @param   title   movie title to search
      *
      **/
     @Test(dataProvider = "popularMovieTitles")
     public void testMovieMetadataOnWebHasCorrectMovieRatingScore(String title) throws Exception {
-        // NOT IMPLEMENTED
-        throw new Exception("Test Pending");
+        MoviePage movieOnImdbWeb = new WebApp(this.testSession)
+            .launch()
+            .search(title)
+            .firstMovieResult();
+
+        // get Movie metadata from http://www.omdbapi.com/
+        Movie movie = new OMDbAPI().getMovie(title);
+        assertThat(movieOnImdbWeb.imdbRating()).isEqualTo(movie.imdbRating());
     }
+
 }
