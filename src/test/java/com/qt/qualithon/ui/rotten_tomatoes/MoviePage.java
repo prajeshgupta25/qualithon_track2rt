@@ -1,4 +1,4 @@
-package com.qt.qualithon.ui.imdb;
+package com.qt.qualithon.ui.rotten_tomatoes;
 
 import com.qt.qualithon.TestSession;
 import com.qt.qualithon.ui.Page;

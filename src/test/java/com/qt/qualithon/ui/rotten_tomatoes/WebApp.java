@@ -1,4 +1,4 @@
-package com.qt.qualithon.ui.imdb;
+package com.qt.qualithon.ui.rotten_tomatoes;
 
 import com.qt.qualithon.TestSession;
 import com.qt.qualithon.ui.Page;
@@ -19,7 +19,7 @@ public class WebApp extends Page{
      * @return    IMDb Web Home Page page object
      **/
     public HomePage launch(){
-        this.testSession.driver().get("https://www.imdb.com");
+        this.testSession.driver().get("https://www.rottentomatoes.com/");
         return new HomePage(this.testSession);
     }
 }

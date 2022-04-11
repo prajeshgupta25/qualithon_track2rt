@@ -8,8 +8,8 @@ import org.testng.annotations.*;
 import static org.assertj.core.api.Assertions.*;
 
 import com.qt.qualithon.TestSession;
-import com.qt.qualithon.ui.imdb.*;
 import com.qt.qualithon.model.Movie;
+import com.qt.qualithon.ui.rotten_tomatoes.*;
 import com.qt.qualithon.api.omdb.*;
 
 /**
