@@ -40,7 +40,7 @@ public class TestSession {
      * @return    webdriver wait instance
      **/
     public WebDriverWait driverWait(){
-        return this.driverWait(30);
+        return this.driverWait(80);
     }
     /**
      * webdriver wait instane with wait timeout set to 90 seconds
@@ -48,7 +48,7 @@ public class TestSession {
      * @return    webdriver wait instance
      **/
     public WebDriverWait driverLongWait(){
-        return this.driverWait(90);
+        return this.driverWait(120);
     }
     /**
      * webdriver wait instane with wait timeout set to 10 seconds
