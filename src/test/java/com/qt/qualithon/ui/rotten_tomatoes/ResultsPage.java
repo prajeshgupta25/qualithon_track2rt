@@ -28,7 +28,7 @@ public class ResultsPage extends Page{
     public List<WebElement> movieResultLinks(){
         List<WebElement> resultLinks = this.testSession.driverWait().until(
             ExpectedConditions.visibilityOfAllElementsLocatedBy(
-                By.cssSelector(".findList .findResult a")
+                By.cssSelector("search-page-result:nth-child(3) search-page-media-row:nth-child(1) a img")
             )
         );
         return resultLinks;

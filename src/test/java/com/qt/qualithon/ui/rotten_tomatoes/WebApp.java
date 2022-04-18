@@ -5,7 +5,7 @@ import com.qt.qualithon.ui.Page;
 // import com.qt.qualithon.ui.imdb.HomePage;
 
 /**
- * entry class to hold IMDB Web Application UI Model/Page Objects
+ * entry class to hold Rotten Tomatoes Web Application UI Model/Page Objects
  **/
 public class WebApp extends Page{
 
@@ -14,9 +14,9 @@ public class WebApp extends Page{
     }
 
     /**
-     * launch IMDb landing page in browser test session
+     * launch Rotten Tomatoes landing page in browser test session
      *
-     * @return    IMDb Web Home Page page object
+     * @return    Rotten Tomatoes Web Home Page page object
      **/
     public HomePage launch(){
         this.testSession.driver().get("https://www.rottentomatoes.com/");

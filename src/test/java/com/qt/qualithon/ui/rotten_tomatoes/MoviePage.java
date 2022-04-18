@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.ArrayList;
 
 /**
- * page object class represents elements and actions on the IMDb Movie Page
+ * page object class represents elements and actions on the Rotten Tomatoes Movie Page
  **/
 public class MoviePage extends Page{
 
@@ -23,7 +23,7 @@ public class MoviePage extends Page{
         // adjust page for tablet formfactor
         WebElement showMoreLink = this.testSession.driverWait().until(
             ExpectedConditions.presenceOfElementLocated(
-              By.cssSelector("a[data-testid='title-pc-expand-more-button']")));
+              By.cssSelector("#showMoreCastAndCrew")));
        
         if(showMoreLink.isDisplayed()){
             showMoreLink.click();
@@ -39,7 +39,7 @@ public class MoviePage extends Page{
     public String title(){
         return this.testSession.driverWait().until(
             ExpectedConditions.visibilityOfElementLocated(
-                By.cssSelector("h1[data-testid='hero-title-block__title']")
+                By.cssSelector("#topSection score-board h1")
             ) 
         ).getText();
     }
@@ -103,11 +103,12 @@ public class MoviePage extends Page{
      * @return    movie release year
      **/
     public String releaseYear(){
-        return this.testSession.driverWait().until(
+        String year = this.testSession.driverWait().until(
             ExpectedConditions.presenceOfElementLocated(
-                By.cssSelector("main div.sc-94726ce4-0.cMYixt div li:nth-child(1)")
+                By.cssSelector("#topSection score-board p")
             ) 
         ).getText();
+        return year.substring(0, 4);
     }
 
     /**
